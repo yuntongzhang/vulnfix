@@ -1,0 +1,31 @@
+diff --git a/jdpostct.c b/jdpostct.c
+index 601fc2a79..a24202ca9 100644
+--- a/jdpostct.c
++++ b/jdpostct.c
+@@ -132,6 +132,11 @@ post_process_1pass (j_decompress_ptr cinfo,
+   my_post_ptr post = (my_post_ptr) cinfo->post;
+   JDIMENSION num_rows, max_rows;
+
++  /* read_and_discard_scanlines may call it with rows "available", but no buffer */
++  if (output_buf == NULL) {
++    return;
++  }
++
+   /* Fill the buffer, but not more than what we can dump out in one go. */
+   /* Note we rely on the upsampler to detect bottom of image. */
+   max_rows = out_rows_avail - *out_row_ctr;
+diff --git a/jquant1.c b/jquant1.c
+index e7814815e..ba2ea9b80 100644
+--- a/jquant1.c
++++ b/jquant1.c
+@@ -531,6 +531,10 @@ quantize_ord_dither (j_decompress_ptr cinfo, JSAMPARRAY input_buf,
+   JDIMENSION col;
+   JDIMENSION width = cinfo->output_width;
+
++  if (output_buf == NULL && num_rows) {
++    ERREXIT(cinfo, JERR_BAD_PARAM);
++  }
++
+   for (row = 0; row < num_rows; row++) {
+     /* Initialize output values to 0 so can process components separately */
+     jzero_far((void *) output_buf[row], (size_t) (width * sizeof(JSAMPLE)));

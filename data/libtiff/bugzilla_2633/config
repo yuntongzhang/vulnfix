@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/libtiff/bugzilla_2633/source/tools/tiff2ps
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/libtiff/bugzilla_2633/exploit
+fix-location=tiff2ps.c:2437
+crash-location=tiff2ps.c:2470
+afl-skip-deterministic=false
+runtime-dir=/home/yuntong/vulnfix/data/libtiff/bugzilla_2633/runtime
+source-dir=/home/yuntong/vulnfix/data/libtiff/bugzilla_2633/source
+fix-file-path=tools/tiff2ps.c
+fix-line=2437
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" -j10

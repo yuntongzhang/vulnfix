@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libming/cve_2016_9264/source/util/listmp3
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/libming/cve_2016_9264/exploit
+fix-location=listmp3.c:124
+crash-location=listmp3.c:128
+runtime-dir=/home/yuntong/vulnfix/data/libming/cve_2016_9264/runtime
+source-dir=/home/yuntong/vulnfix/data/libming/cve_2016_9264/source
+fix-file-path=util/listmp3.c
+fix-line=124
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g"

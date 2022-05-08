@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libxml2/cve_2016_1839/source/xmllint
+cmd=-html <exploit>
+exploit=/home/yuntong/vulnfix/data/libxml2/cve_2016_1839/exploit
+fix-location=HTMLparser.c:2517
+crash-location=dict.c:285
+runtime-dir=/home/yuntong/vulnfix/data/libxml2/cve_2016_1839/runtime
+source-dir=/home/yuntong/vulnfix/data/libxml2/cve_2016_1839/source
+fix-file-path=HTMLparser.c
+fix-line=2517
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" -j10

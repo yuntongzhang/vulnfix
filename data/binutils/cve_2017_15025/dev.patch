@@ -1,0 +1,15 @@
+X-Git-Url: https://sourceware.org/git/?p=binutils-gdb.git;a=blobdiff_plain;f=bfd%2Fdwarf2.c;h=8b2281ee86cfd2e3766f6970e28e2818d19e7f9d;hp=89a3f9b183019fb8d92ba59584b6fb1429d72d55;hb=d8010d3e75ec7194a4703774090b27486b742d48;hpb=515f23e63c0074ab531bc954f84ca40c6281a724
+
+diff --git a/bfd/dwarf2.c b/bfd/dwarf2.c
+index 89a3f9b1830..8b2281ee86c 100644
+--- a/bfd/dwarf2.c
++++ b/bfd/dwarf2.c
+@@ -2437,6 +2437,8 @@ decode_line_info (struct comp_unit *unit, struct dwarf2_debug *stash)
+ 	    case DW_LNS_set_basic_block:
+ 	      break;
+ 	    case DW_LNS_const_add_pc:
++	      if (lh.line_range == 0)
++		    goto line_fail;
+ 	      if (lh.maximum_ops_per_insn == 1)
+ 		address += (lh.minimum_instruction_length
+ 			    * ((255 - lh.opcode_base) / lh.line_range));

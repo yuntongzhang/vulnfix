@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/coreutils/gnubug_25023/source/src/pr
+cmd=
+exploit=/home/yuntong/vulnfix/data/coreutils/gnubug_25023/exploit
+fix-location=pr.c:1239
+crash-location=pr.c:2243
+runtime-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_25023/runtime
+input-from-stdin=true
+source-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_25023/source
+fix-file-path=src/pr.c
+fix-line=1238
+build-cmd=make clean && make CFLAGS="-Wno-error -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-Wno-error -fsanitize=address -fsanitize=undefined -g" -j10

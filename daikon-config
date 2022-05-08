@@ -1,0 +1,23 @@
+daikon.derive.Derivation.disable_derived_variables = true
+daikon.Daikon.quiet = true
+
+daikon.inv.unary.scalar.OneOfScalar.size = 1
+daikon.inv.unary.scalar.OneOfFloat.size = 1
+daikon.inv.unary.scalar.LowerBound.minimal_interesting = -10
+daikon.inv.unary.scalar.LowerBound.maximal_interesting = 10
+daikon.inv.unary.scalar.UpperBound.maximal_interesting = 100
+daikon.inv.unary.scalar.RangeInt.PowerOfTwo.enabled = false
+daikon.inv.unary.sequence.EltRangeInt.PowerOfTwo.enabled = false
+
+daikon.inv.binary.twoScalar.NumericInt.Divides.enabled = false
+daikon.inv.binary.twoScalar.NumericInt.Square.enabled = false
+daikon.inv.binary.twoScalar.LinearBinary.enabled = true
+daikon.inv.binary.twoScalar.IntGreaterThan.enabled = true
+daikon.inv.binary.twoScalar.IntEqual.enabled = false
+
+daikon.inv.ternary.threeScalar.LinearTernary.enabled = false
+daikon.inv.ternary.threeScalar.LinearTernaryFloat.enabled = false
+
+daikon.PptSliceEquality.set_per_var = true
+
+daikon.PrintInvariants.print_inv_class = true

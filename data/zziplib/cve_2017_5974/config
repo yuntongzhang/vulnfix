@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/zziplib/cve_2017_5974/source/<parameter-dir>/bins/unzzipcat-mem
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/zziplib/cve_2017_5974/exploit
+fix-location=memdisk.c:221
+crash-location=memdisk.c:224
+runtime-dir=/home/yuntong/vulnfix/data/zziplib/cve_2017_5974/runtime
+use-raw-size=true
+source-dir=/home/yuntong/vulnfix/data/zziplib/cve_2017_5974/source
+fix-file-path=zzip/memdisk.c
+fix-line=221
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" -j10

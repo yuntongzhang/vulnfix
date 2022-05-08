@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libtiff/cve_2016_10094/source/tools/tiff2pdf
+cmd=<exploit> -o out.tmp
+exploit=/home/yuntong/vulnfix/data/libtiff/cve_2016_10094/exploit
+fix-location=tiff2pdf.c:2900
+crash-location=tiff2pdf.c:2900
+runtime-dir=/home/yuntong/vulnfix/data/libtiff/cve_2016_10094/runtime
+source-dir=/home/yuntong/vulnfix/data/libtiff/cve_2016_10094/source
+fix-file-path=tools/tiff2pdf.c
+fix-line=2900
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" -j10

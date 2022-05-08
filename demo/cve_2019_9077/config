@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/demo/cve_2019_9077/source/binutils/readelf
+cmd=-a <exploit>
+exploit=/home/yuntong/vulnfix/demo/cve_2019_9077/exploit
+fix-location=readelf.c:16188
+crash-location=readelf.c:16211
+runtime-dir=/home/yuntong/vulnfix/demo/cve_2019_9077/runtime
+source-dir=/home/yuntong/vulnfix/demo/cve_2019_9077/source
+fix-file-path=binutils/readelf.c
+fix-line=16188
+build-cmd=ASAN_OPTIONS=detect_leaks=0 make clean && make CFLAGS="-ldl -lutil -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="$CFLAGS" LDFLAGS=" -ldl -lutil -fsanitize=address -fsanitize=undefined" -j10

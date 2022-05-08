@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libxml2/cve_2016_1838/source/xmllint
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/libxml2/cve_2016_1838/exploit
+fix-location=parser.c:9836
+crash-location=parser.c:9837
+runtime-dir=/home/yuntong/vulnfix/data/libxml2/cve_2016_1838/runtime
+source-dir=/home/yuntong/vulnfix/data/libxml2/cve_2016_1838/source
+fix-file-path=parser.c
+fix-line=9836
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" LDFLAGS="-fsanitize=address" -j10

@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libjpeg/cve_2012_2806/source/djpeg
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/libjpeg/cve_2012_2806/exploit
+fix-location=jdmarker.c:327
+crash-location=jdmarker.c:327
+runtime-dir=/home/yuntong/vulnfix/data/libjpeg/cve_2012_2806/runtime
+source-dir=/home/yuntong/vulnfix/data/libjpeg/cve_2012_2806/source
+fix-file-path=jdmarker.c
+fix-line=326
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" -j10

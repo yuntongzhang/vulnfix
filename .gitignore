@@ -1,0 +1,62 @@
+# python
+*__pycache__/
+*.pyc
+
+# build files
+*.so
+*.o
+afl-rt
+afl_mark
+e9afl
+patch_hook
+lib/e9compile.sh
+lib/e9patch
+lib/e9tool
+lib/stdlib.c
+
+# runtime generated files
+data/*/*/runtime/
+data/*/*/cvcback-runtime/
+data/*/*/conc-runtime/
+data/*/*/afl-runtime/
+data/*/*/source/
+out.tmp
+*.dtrace
+*.decls
+*.inv
+*.inv.gz
+logfile-debug*
+run-temp/
+data/coreutils/gnubug_26545/000*
+
+xaaa.tif
+exploit.eps
+
+# vscode
+.vscode/
+
+# build binaries
+cjpeg
+djpeg
+tiffmedian
+tiff2pdf
+tiffcrop
+tiffcp
+objdump
+nm-new
+readelf
+split
+make-prime-list
+pr
+shred
+imginfo
+bsdtar
+xmllint
+unzzipcat-mem
+swftophp
+rgb2ycbcr
+tiffsplit
+listmp3
+tiff2ps
+gif2tiff
+data/potrace/*/potrace

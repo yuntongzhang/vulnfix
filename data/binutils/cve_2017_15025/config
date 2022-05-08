@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/binutils/cve_2017_15025/source/binutils/nm-new
+cmd=-A -a -l -S -s --special-syms --synthetic --with-symbol-versions <exploit>
+exploit=/home/yuntong/vulnfix/data/binutils/cve_2017_15025/exploit
+fix-location=dwarf2.c:2440
+crash-location=dwarf2.c:2441
+runtime-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_15025/runtime
+afl-skip-deterministic=false
+source-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_15025/source
+fix-file-path=bfd/dwarf2.c
+fix-line=2440
+build-cmd=make clean && ASAN_OPTIONS=detect_leaks=0 make CFLAGS="-ldl -lutil -fsanitize=address -ggdb" CXXFLAGS="-fsanitize=address -ldl -lutil -ggdb" LDFLAGS=" -ldl -lutil -fsanitize=address" -j10

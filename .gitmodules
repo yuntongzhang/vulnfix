@@ -1,0 +1,16 @@
+[submodule "thirdparty/e9patch"]
+	path = thirdparty/e9patch
+	url = https://github.com/GJDuck/e9patch.git
+	ignore = dirty
+[submodule "thirdparty/AFL"]
+	path = thirdparty/AFL
+	url = https://github.com/yuntongzhang/AFL.git
+	ignore = dirty
+[submodule "thirdparty/cvc5"]
+	path = thirdparty/cvc5
+	url = https://github.com/cvc5/cvc5.git
+	ignore = dirty
+[submodule "thirdparty/daikon"]
+	path = thirdparty/daikon
+	url = https://github.com/yuntongzhang/daikon.git
+	ignore = dirty

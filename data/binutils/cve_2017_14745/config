@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/binutils/cve_2017_14745/source/binutils/objdump
+cmd=-D <exploit>
+exploit=/home/yuntong/vulnfix/data/binutils/cve_2017_14745/exploit
+normal-in=/home/yuntong/vulnfix/data/binutils/cve_2017_14745/testprog
+fix-location=elf64-x86-64.c:6720
+crash-location=elf64-x86-64.c:6632
+runtime-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_14745/runtime
+source-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_14745/source
+fix-file-path=bfd/elf64-x86-64.c
+fix-line=6720
+build-cmd=make clean && ASAN_OPTIONS=detect_leaks=0 make CFLAGS="-ldl -lutil -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-fsanitize=address -fsanitize=undefined -ldl -lutil -g" LDFLAGS=" -ldl -lutil -fsanitize=address -fsanitize=undefined" -j10

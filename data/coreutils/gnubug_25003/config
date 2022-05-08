@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/coreutils/gnubug_25003/source/src/split
+cmd=
+exploit=/home/yuntong/vulnfix/data/coreutils/gnubug_25003/exploit
+fix-location=split.c:988
+crash-location=split.c:988
+runtime-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_25003/runtime
+input-from-stdin=true
+source-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_25003/source
+fix-file-path=src/split.c
+fix-line=986
+build-cmd=make clean && make CFLAGS="-Wno-error -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-Wno-error -fsanitize=address -fsanitize=undefined -g" -j10

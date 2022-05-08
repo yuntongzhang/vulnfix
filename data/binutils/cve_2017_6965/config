@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/binutils/cve_2017_6965/source/binutils/readelf
+cmd=-w <exploit>
+exploit=/home/yuntong/vulnfix/data/binutils/cve_2017_6965/exploit
+fix-location=readelf.c:11639
+crash-location=elfcomm.c:75
+runtime-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_6965/runtime
+source-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_6965/source
+fix-file-path=binutils/readelf.c
+fix-line=11639
+build-cmd=make clean && ASAN_OPTIONS=detect_leaks=0 make CFLAGS="-Wno-error -ldl -lutil -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-Wno-error -fsanitize=address -fsanitize=undefined -ldl -lutil -g" LDFLAGS=" -ldl -lutil -fsanitize=address -fsanitize=undefined" -j10

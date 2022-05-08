@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/potrace/cve_2013_7437/source/src/potrace
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/potrace/cve_2013_7437/exploit
+fix-location=bitmap_io.c:482
+crash-location=bitmap_io.c:543
+runtime-dir=/home/yuntong/vulnfix/data/potrace/cve_2013_7437/runtime
+afl-skip-deterministic=false
+source-dir=/home/yuntong/vulnfix/data/potrace/cve_2013_7437/source/
+fix-file-path=src/bitmap_io.c
+fix-line=482
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address,implicit-conversion -g" CXXFLAGS="-static -fsanitize=address,implicit-conversion -g" LDFLAGS=" -fsanitize=address,implicit-conversion" -j10

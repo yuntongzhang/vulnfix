@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libjpeg/cve_2018_19664/source/djpeg
+cmd=-colors 256 -bmp <exploit>
+exploit=/home/yuntong/vulnfix/data/libjpeg/cve_2018_19664/exploit
+fix-location=wrbmp.c:507
+crash-location=wrbmp.c:145
+runtime-dir=/home/yuntong/vulnfix/data/libjpeg/cve_2018_19664/runtime
+source-dir=/home/yuntong/vulnfix/data/libjpeg/cve_2018_19664/source
+fix-file-path=wrbmp.c
+fix-line=507
+build-cmd=make clean && make -j10

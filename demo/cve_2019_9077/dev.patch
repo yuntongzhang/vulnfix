@@ -1,0 +1,19 @@
+X-Git-Url: https://sourceware.org/git/?p=binutils-gdb.git;a=blobdiff_plain;f=binutils%2Freadelf.c;h=20ebacc9cbd029bb68364668a96a66ebafd26fd1;hp=54d165e60993c6b9bb6c431505e88d574a0430e1;hb=7fc0c668f2aceb8582d74db1ad2528e2bba8a921;hpb=8d18bf796bf70d71eb23f4247e29a1fab5f3c5c7
+
+diff --git a/binutils/readelf.c b/binutils/readelf.c
+index 54d165e6099..20ebacc9cbd 100644
+--- a/binutils/readelf.c
++++ b/binutils/readelf.c
+@@ -16187,6 +16187,12 @@ process_mips_specific (Filedata * filedata)
+ 	  error (_("No MIPS_OPTIONS header found\n"));
+ 	  return FALSE;
+ 	}
++      /* PR 24243  */
++      if (sect->sh_size < sizeof (* eopt))
++	{
++	  error (_("The MIPS options section is too small.\n"));
++	  return FALSE;
++	}
+
+       eopt = (Elf_External_Options *) get_data (NULL, filedata, options_offset, 1,
+                                                 sect->sh_size, _("options"));

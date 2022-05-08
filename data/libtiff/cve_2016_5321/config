@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libtiff/cve_2016_5321/source/tools/tiffcrop
+cmd=<exploit> /home/yuntong/vulnfix/out.tmp
+exploit=/home/yuntong/vulnfix/data/libtiff/cve_2016_5321/exploit
+fix-location=tiffcrop.c:994
+crash-location=tiffcrop.c:994
+runtime-dir=/home/yuntong/vulnfix/data/libtiff/cve_2016_5321/runtime
+source-dir=/home/yuntong/vulnfix/data/libtiff/cve_2016_5321/source
+fix-file-path=tools/tiffcrop.c
+fix-line=992
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" LDFLAGS="-fsanitize=address -fsanitize=undefined" -j10

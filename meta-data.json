@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "bug_id": "cve_2017_6965",
+    "subject": "binutils"
+  },
+  {
+    "id": 2,
+    "bug_id": "cve_2017_14745",
+    "subject": "binutils"
+  },
+  {
+    "id": 3,
+    "bug_id": "cve_2017_15025",
+    "subject": "binutils"
+  },
+  {
+    "id": 4,
+    "bug_id": "gnubug_19784",
+    "subject": "coreutils"
+  },
+  {
+    "id": 5,
+    "bug_id": "gnubug_25003",
+    "subject": "coreutils"
+  },
+  {
+    "id": 6,
+    "bug_id": "gnubug_25023",
+    "subject": "coreutils"
+  },
+  {
+    "id": 7,
+    "bug_id": "gnubug_26545",
+    "subject": "coreutils"
+  },
+  {
+    "id": 8,
+    "bug_id": "cve_2016_8691",
+    "subject": "jasper"
+  },
+  {
+    "id": 9,
+    "bug_id": "cve_2016_9557",
+    "subject": "jasper"
+  },
+  {
+    "id": 10,
+    "bug_id": "cve_2016_5844",
+    "subject": "libarchive"
+  },
+  {
+    "id": 11,
+    "bug_id": "cve_2012_2806",
+    "subject": "libjpeg"
+  },
+  {
+    "id": 12,
+    "bug_id": "cve_2017_15232",
+    "subject": "libjpeg"
+  },
+  {
+    "id": 13,
+    "bug_id": "cve_2018_19664",
+    "subject": "libjpeg"
+  },
+  {
+    "id": 14,
+    "bug_id": "cve_2016_9264",
+    "subject": "libming"
+  },
+  {
+    "id": 15,
+    "bug_id": "bugzilla_2633",
+    "subject": "libtiff"
+  },
+  {
+    "id": 16,
+    "bug_id": "cve_2016_5321",
+    "subject": "libtiff"
+  },
+  {
+    "id": 17,
+    "bug_id": "cve_2016_9532",
+    "subject": "libtiff"
+  },
+  {
+    "id": 18,
+    "bug_id": "cve_2016_10094",
+    "subject": "libtiff"
+  },
+  {
+    "id": 19,
+    "bug_id": "cve_2017_7595",
+    "subject": "libtiff"
+  },
+  {
+    "id": 20,
+    "bug_id": "cve_2017_7599",
+    "subject": "libtiff"
+  },
+  {
+    "id": 21,
+    "bug_id": "cve_2017_7600",
+    "subject": "libtiff"
+  },
+  {
+    "id": 22,
+    "bug_id": "cve_2017_7601",
+    "subject": "libtiff"
+  },
+  {
+    "id": 23,
+    "bug_id": "cve_2012_5134",
+    "subject": "libxml2"
+  },
+  {
+    "id": 24,
+    "bug_id": "cve_2016_1838",
+    "subject": "libxml2"
+  },
+  {
+    "id": 25,
+    "bug_id": "cve_2016_1839",
+    "subject": "libxml2"
+  },
+  {
+    "id": 26,
+    "bug_id": "cve_2017_5969",
+    "subject": "libxml2"
+  },
+  {
+    "id": 27,
+    "bug_id": "cve_2013_7437",
+    "subject": "potrace"
+  },
+  {
+    "id": 28,
+    "bug_id": "cve_2017_5974",
+    "subject": "zziplib"
+  },
+  {
+    "id": 29,
+    "bug_id": "cve_2017_5975",
+    "subject": "zziplib"
+  },
+  {
+    "id": 30,
+    "bug_id": "cve_2017_5976",
+    "subject": "zziplib"
+  }
+]

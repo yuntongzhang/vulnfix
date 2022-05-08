@@ -1,0 +1,15 @@
+X-Git-Url: https://sourceware.org/git/?p=binutils-gdb.git;a=blobdiff_plain;f=bfd%2Felf64-x86-64.c;h=80dd791d25ca9f9e8d86cbdfc6ef62021b843f23;hp=6bc1898a966bf2e842ac02cc4af55ccfc5cc8232;hb=e6ff33ca50c1180725dde11c84ee93fcdb4235ef;hpb=7a31b38ef87d133d8204cae67a97f1989d25fa18
+
+diff --git a/bfd/elf64-x86-64.c b/bfd/elf64-x86-64.c
+index 6bc1898a966..80dd791d25c 100644
+--- a/bfd/elf64-x86-64.c
++++ b/bfd/elf64-x86-64.c
+@@ -6717,6 +6717,8 @@ elf_x86_64_get_synthetic_symtab (bfd *abfd,
+
+   dynrelcount = bfd_canonicalize_dynamic_reloc (abfd, dynrelbuf,
+ 						dynsyms);
++  if (dynrelcount < 0)
++    return -1;
+
+   /* Sort the relocs by address.  */
+   qsort (dynrelbuf, dynrelcount, sizeof (arelent *), compare_relocs);

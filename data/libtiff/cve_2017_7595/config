@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libtiff/cve_2017_7595/source/tools/tiffcp
+cmd=-i <exploit> out.tmp
+exploit=/home/yuntong/vulnfix/data/libtiff/cve_2017_7595/exploit
+fix-location=tif_jpeg.c:1633
+crash-location=tif_jpeg.c:1687
+runtime-dir=/home/yuntong/vulnfix/data/libtiff/cve_2017_7595/runtime
+source-dir=/home/yuntong/vulnfix/data/libtiff/cve_2017_7595/source
+fix-file-path=libtiff/tif_jpeg.c
+fix-line=1634
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" -j10

@@ -1,0 +1,14 @@
+diff --git a/parser.c b/parser.c
+index 0d8d7f2e..bd634e93 100644
+--- a/parser.c
++++ b/parser.c
+@@ -4076,7 +4076,7 @@ xmlParseAttValueComplex(xmlParserCtxtPtr ctxt, int *attlen, int normalize) {
+         goto error;
+
+     if ((in_space) && (normalize)) {
+-        while (buf[len - 1] == 0x20) len--;
++        while ((len > 0) && (buf[len - 1] == 0x20)) len--;
+     }
+     buf[len] = 0;
+     if (RAW == '<') {
+--

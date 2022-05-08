@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/coreutils/gnubug_26545/source/src/shred
+cmd=
+exploit=/home/yuntong/vulnfix/data/coreutils/gnubug_26545/exploit
+fix-location=shred.c:290
+crash-location=shred.c:293
+input-from-stdin=true
+runtime-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_26545/runtime
+source-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_26545/source
+fix-file-path=src/shred.c
+fix-line=290
+build-cmd=make clean && make CFLAGS="-Wno-error -fsanitize=address -ggdb" CXXFLAGS="-Wno-error -fsanitize=address -ggdb" LDFLAGS="-fsanitize=address" -j10

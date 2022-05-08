@@ -1,0 +1,11 @@
+binary=/home/yuntong/vulnfix/data/coreutils/gnubug_19784/source/src/make-prime-list
+cmd=
+exploit=/home/yuntong/vulnfix/data/coreutils/gnubug_19784/exploit
+fix-location=0x2d46
+crash-location=0x2d46
+input-from-stdin=true
+runtime-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_19784/runtime
+source-dir=/home/yuntong/vulnfix/data/coreutils/gnubug_19784/source
+fix-file-path=src/make-prime-list.c
+fix-line=216
+build-cmd=export FORCE_UNSAFE_CONFIGURE=1 && make clean && make CFLAGS="-Wno-error -fsanitize=address -g" src/make-prime-list

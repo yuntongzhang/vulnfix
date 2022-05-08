@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libxml2/cve_2017_5969/source/xmllint
+cmd=--recover <exploit>
+exploit=/home/yuntong/vulnfix/data/libxml2/cve_2017_5969/exploit
+fix-location=valid.c:1181
+crash-location=valid.c:1181
+runtime-dir=/home/yuntong/vulnfix/data/libxml2/cve_2017_5969/runtime
+source-dir=/home/yuntong/vulnfix/data/libxml2/cve_2017_5969/source
+fix-file-path=valid.c
+fix-line=1181
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" LDFLAGS="-fsanitize=address" -j10
