@@ -1,0 +1,210 @@
+=================== (1) binutils cve_2017_6965 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (2) binutils cve_2017_14745 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (3) binutils cve_2017_15025 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (4) coreutils gnubug_19784 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+2
+['_GSize_sieve - i >= 2', 'size - i >= 2']
+
+=================== (5) coreutils gnubug_25003 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+33
+['in_stat_buf.st_size >= start', 'start <= verbose', 'in_stat_buf.st_gid >= start', 'in_stat_buf.st_nlink - start >= 1', 'eolchar - end >= 9', 'eolchar - k >= 9', 'in_stat_buf.st_atim.tv_nsec >= start', 'suffix_length - start >= 2', 'end <= in_stat_buf.st_nlink', 'in_stat_buf.st_mtim.tv_nsec >= start', 'end <= 1', 'suffix_length - end >= 1', 'start <= suffix_auto', 'in_stat_buf.st_uid >= start', 'eolchar - start >= 10', 'start <= unbuffered', 'k <= 1', 'start == 0', 'n_open_pipes >= start', 'in_stat_buf.st_nlink >= k', 'in_stat_buf.st_blocks >= start', 'in_stat_buf.__pad0 >= start', 'end == 1', 'in_stat_buf.st_rdev >= start', 'initial_read >= start', 'k == 1', 'open_pipes_alloc >= start', 'k < suffix_length', 'suffix_length - k >= 1', 'filter_pid >= start', 'elide_empty_files >= start', 'end < suffix_length', 'start <= 0']
+
+=================== (6) coreutils gnubug_25023 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+11
+['_GDiff_col_sep_string >= col_sep_length', 'chars_per_input_tab - col_sep_length >= 6', 'chars_per_number - col_sep_length >= 3', '*col_sep_string - col_sep_length >= 7', 'col_sep_length <= 2', 'col_sep_length <= columns', 'output_tab_char - col_sep_length >= 7', 'col_sep_length <= number_of_files', 'number_separator - col_sep_length >= 7', 'chars_per_output_tab - col_sep_length >= 6', 'input_tab_char - col_sep_length >= 7']
+
+=================== (7) coreutils gnubug_26545 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (8) jasper cve_2016_8691 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+23
+['cmpt->hstep - siz->tileyoff >= 1', 'cmpt->hstep - dec->cp->mctid >= 1', 'cmpt->hstep - dec->numvtiles >= 1', 'cmpt->hstep - dec->in->rwlimit_ >= 2', 'cmpt->hstep - dec->curtileendoff >= 1', 'cmpt->hstep >= cmpt->prec', 'cmpt->hstep - dec->cp->flags >= 1', 'cmpt->hstep - _GDiff_cmpt >= 1', 'cmpt->hstep - dec->cp->prgord >= 1', 'cmpt->hstep - dec->tileyoff >= 1', 'cmpt->hstep >= siz->comps->prec', 'cmpt->hstep >= 1', '_GDiff_cmpt < cmpt->hstep', 'cmpt->hstep - siz->comps->sgnd >= 1', 'cmpt->hstep - dec->cp->csty >= 1', 'cmpt->hstep - dec->numhtiles >= 1', 'cmpt->hstep - dec->maxpkts >= 2', 'cmpt->hstep - compno >= 1', 'cmpt->hstep - dec->numtiles >= 1', 'cmpt->hstep - dec->cp->numlyrs >= 1', 'cmpt->hstep - dec->ppmseqno >= 1', 'cmpt->hstep - dec->numpkts >= 1', 'cmpt->hstep - dec->in->flags_ >= 1']
+
+=================== (9) jasper cve_2016_9557 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (10) libarchive cve_2016_5844 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (11) libjpeg cve_2012_2806 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+6
+['i <= n', 'i <= 3', '_GDiff_cinfo->comp_info - i >= 29', '_GDiff_cinfo->marker - i >= 29', 'length - i >= 9', 'cinfo->comps_in_scan >= i']
+
+=================== (12) libjpeg cve_2017_15232 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (13) libjpeg cve_2018_19664 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (14) libming cve_2016_9264 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+4
+['_GDiff_f->_IO_read_end - samplerate_idx >= 6', 'f->_chain->_fileno >= samplerate_idx', 'samplerate_idx <= 2', 'f->_fileno - samplerate_idx >= 2']
+
+=================== (15) libtiff bugzilla_2633 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (16) libtiff cve_2016_5321 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+4
+['s <= 7', 's < sample', '*tbuff == 190', 'sample - s >= 1']
+
+=================== (17) libtiff cve_2016_9532 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+38
+['bytes_per_sample < rowstripsize', 'length < rowstripsize', 'out->tif_dir.td_tilewidth < rowstripsize', 'out->tif_dir.td_orientation < rowstripsize', 'out->tif_dir.td_samplesperpixel < rowstripsize', 'dump->level < rowstripsize', 'config < rowstripsize', 'out->tif_dir.td_tiledepth < rowstripsize', 'rowstripsize > stripsize', 'jpegcolormode < rowstripsize', 'out->tif_nfields < rowstripsize', 'out->tif_dir.td_imagedepth < rowstripsize', 'rowstripsize > width', 'out->tif_fd < rowstripsize', 'out->tif_mode < rowstripsize', 'out->tif_decodestatus < rowstripsize', 'out->tif_encodestatus < rowstripsize', 'bps < rowstripsize', 'rowstripsize > spp', '*out->tif_name < rowstripsize', 'out->tif_header_size < rowstripsize', 'little_endian < rowstripsize', 'out->tif_dir.td_compression < rowstripsize', 'compression < rowstripsize', 'out->tif_dir.td_threshholding < rowstripsize', 'out->tif_dir.td_bitspersample < rowstripsize', 'out->tif_dir.td_resolutionunit < rowstripsize', 'rowstripsize > scanlinesize', '_GSize_out->tif_fields < rowstripsize', 'out->tif_dir.td_sampleformat < rowstripsize', 'out->tif_dir.td_fillorder < rowstripsize', 'out->tif_dir.td_imagelength < rowstripsize', 'out->tif_dir.td_ycbcrpositioning < rowstripsize', 'out->tif_dir.td_planarconfig < rowstripsize', 'out->tif_dir.td_stripbytecountsorted < rowstripsize', 'out->tif_flags < rowstripsize', 'out->tif_dir.td_imagewidth < rowstripsize', 'quality < rowstripsize']
+
+=================== (18) libtiff cve_2016_10094 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+26
+['t2p->tiff_datasize > t2p->tiff_tiles->tiles_tilelength', '*input->tif_dir.td_stripbytecount > *jpt', '*input->tif_dir.td_stripbytecount > input->tif_dir.td_nstrips', 'input->tif_dir.td_customValueCount < t2p->tiff_datasize', 'input->tif_dir.td_customValues->count < t2p->tiff_datasize', '*input->tif_dir.td_stripbytecount >= 13', '*input->tif_dir.td_stripbytecount > input->tif_dir.td_tilelength', '*jpt < t2p->tiff_datasize', '*input->tif_dir.td_stripbytecount > input->tif_dir.td_customValues->count', '*input->tif_dir.td_stripbytecount > t2p->tiff_length', '*input->tif_dir.td_stripbytecount > t2p->tiff_pages->page_tilecount', '*input->tif_dir.td_stripbytecount > input->tif_dir.td_imagelength', 'input->tif_dir.td_imagelength < t2p->tiff_datasize', 't2p->tiff_datasize >= 13', '*input->tif_dir.td_stripbytecount > t2p->tiff_tiles->tiles_tilelength', '*input->tif_dir.td_stripbytecount > input->tif_dir.td_customValueCount', 'input->tif_dir.td_stripsperimage < t2p->tiff_datasize', 't2p->tiff_datasize > t2p->tiff_pages->page_tilecount', 't2p->tiff_datasize > t2p->tiff_tiles->tiles_tilecount', 'input->tif_dir.td_tilelength < t2p->tiff_datasize', '*input->tif_dir.td_stripbytecount > input->tif_dir.td_stripsperimage', 't2p->tiff_datasize > t2p->tiff_tiles->tiles_tilecounty', 't2p->tiff_datasize > t2p->tiff_length', '*input->tif_dir.td_stripbytecount > t2p->tiff_tiles->tiles_tilecounty', 'input->tif_dir.td_nstrips < t2p->tiff_datasize', '*input->tif_dir.td_stripbytecount > t2p->tiff_tiles->tiles_tilecount']
+
+=================== (19) libtiff cve_2017_7595 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+14
+['sp->v_sampling - tif->tif_scanlinesize >= 1', '_GSize_td->td_stripoffset < sp->v_sampling', 'sp->v_sampling != 0', 'sp->v_sampling - _GSize_td->td_stripbytecount >= 1', 'sp->v_sampling - td->td_imagewidth >= 1', 'sp->v_sampling - td->td_nstrips >= 1', '_GSize_td->td_stripbytecount < sp->v_sampling', 'sp->v_sampling - td->td_extrasamples >= 1', 'sp->v_sampling >= 2', 'sp->v_sampling - td->td_stripsperimage >= 1', 'sp->v_sampling - _GSize_td->td_stripoffset >= 1', 'sp->v_sampling - sp->ycbcrsampling_fetched >= 2', 'sp->v_sampling - td->td_customValueCount >= 2', 'sp->v_sampling - td->td_minsamplevalue >= 2']
+
+=================== (20) libtiff cve_2017_7599 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (21) libtiff cve_2017_7600 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (22) libtiff cve_2017_7601 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+2
+['tif->tif_scanlinesize <= 6', 'td->td_bitspersample <= 41']
+
+=================== (23) libxml2 cve_2012_5134 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+6
+['ctxt->wellFormed <= len', 'len - ctxt->nbentities >= 1', 'len >= 1', 'ctxt->lastError.code != len', 'ctxt->errNo != len', 'ctxt->nbentities < len']
+
+=================== (24) libxml2 cve_2016_1838 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (25) libxml2 cve_2016_1839 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (26) libxml2 cve_2017_5969 ===================
+SUCCESS (Exactly one patch invariant in the end) (Its correctness is not checked yet)
+
+Patch Invariants:
+1
+['content->c2 != NULL']
+
+=================== (27) potrace cve_2013_7437 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (28) zziplib cve_2017_5974 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+16
+['_GSize_block - item->zz_diskstart >= 35', '_GSize_block - item->zz_offset >= 35', '_GSize_block - item->zz_csize >= 32', '_GSize_block >= 35', '_GSize_block - item->zz_flags >= 35', '_GDiff_item->zz_data - _GSize_disk >= 3', '_GSize_block - *disk->endbuf >= 35', '_GSize_block - item->zz_filetype >= 34', '_GSize_block - item->zz_usize >= 32', '_GSize_block - _GSize_item->zz_name >= 30', '_GSize_block - disk->flags >= 33', '_GDiff_item->zz_data >= 67', '_GSize_block - item->zz_compr >= 35', '_GSize_block - disk->mapped >= 36', '_GDiff_entry < _GDiff_item->zz_data', '_GDiff_item->zz_data - _GDiff_entry >= 2']
+
+=================== (29) zziplib cve_2017_5975 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+
+=================== (30) zziplib cve_2017_5976 ===================
+FAIL (More than one or no patch invariants in the end)
+
+Patch Invariants:
+0
+[]
+

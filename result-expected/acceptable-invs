@@ -1,0 +1,173 @@
+=================== (1) binutils cve_2017_6965 ===================
+
+_GSize_start - reloc->r_offset >= 4  {correct: stronger than dev patch, as `reloc_size` is newly introduced in dev patch.}
+
+
+=================== (2) binutils cve_2017_14745 ===================
+
+dynrelcount >= 0                     {equiv}
+
+
+=================== (3) binutils cve_2017_15025 ===================
+
+lh.line_range != 0                   {equiv}
+lh.line_range >= 1                   {equiv}
+
+
+=================== (4) coreutils gnubug_19784 ===================
+
+size - i >= 2                        {equiv}
+_GSize_sieve - i >= 2                {equiv}
+
+
+=================== (5) coreutils gnubug_25003 ===================
+
+start < intial_read                  {equiv}
+start <= initial_read                {correct: this is the actual boundary separating benign and vulnerable executions.}
+
+
+=================== (6) coreutils gnubug_25023 ===================
+
+col_sep_length == 1                  {equiv}
+col_sep_length <= 2                  {correct: this is the actual boundary separating benign and vulnerable executions.}
+
+
+=================== (7) coreutils gnubug_26545 ===================
+
+i <= size / 2                        {equiv}
+
+
+=================== (8) jasper cve_2016_8691 ===================
+
+cmpt->hstep != 0                     {equiv}
+cmpt->hstep >= 1                     {equiv}
+
+
+=================== (9) jasper cve_2016_9557 ===================
+
+cmptparm->width * cmptparm->height * (cmptparm->prec + 7) < ULONG_MAX        {equiv}
+
+
+=================== (10) libarchive cve_2016_5844 ===================
+
+vd->location < 1048576               {correct: dev patch casts vd->location}
+vd->location <= 1048575              {correct}
+
+
+=================== (11) libjpeg cve_2012_2806 ===================
+
+i < MAX_COMPS_IN_SCAN                {equiv}
+i < 4                                {equiv: MAX_COMPS_IN_SCAN == 4}
+i <= 3                               {equiv}
+
+
+=================== (12) libjpeg cve_2017_15232 ===================
+
+output_buf != NULL                   {equiv}
+
+
+=================== (13) libjpeg cve_2018_19664 ===================
+
+cinfo->quantize_colors == 0          {equiv}
+
+
+=================== (14) libming cve_2016_9264 ===================
+
+samplerate_idx <= MP3_SAMPLERATE_IDX_MAX       {equiv}
+samplerate_idx <= 2                            {equiv: MP3_SAMPLERATE_IDX_MAX == 2}
+
+
+=================== (15) libtiff bugzilla_2633 ===================
+
+es > 0                               {equiv}
+samplesperpixel > nc                 {equiv}
+
+
+=================== (16) libtiff cve_2016_5321 ===================
+
+s < MAX_SAMPLES                      {equiv}
+s < 8                                {equiv: MAX_SAMPLES == 8}
+s <= 7                               {equiv}
+
+
+=================== (17) libtiff cve_2016_9532 ===================
+
+(bps * spp * width) + 7 <= UINT32_MAX &&
+rowsperstrip * bytes_per_sample * (width + 1) <= UINT32_MAX     {equiv}
+
+
+=================== (18) libtiff cve_2016_10094 ===================
+
+count > 4                            {equiv}
+
+
+=================== (19) libtiff cve_2017_7595 ===================
+
+sp->v_sampling != 0                  {equiv}
+sp->v_sampling >= 1                  {equiv}
+
+
+=================== (20) libtiff cve_2017_7599 ===================
+
+value[i] >= -32768 && value[i] <= 32768     {equiv}
+
+
+=================== (21) libtiff cve_2017_7600 ===================
+
+value[i] >= 0 && value[i] <= 255     {equiv}
+
+
+=================== (22) libtiff cve_2017_7601 ===================
+
+td->td_bitspersample <= 16           {equiv}
+td->td_bitspersample <= 62           {correct: this is the actual boundary separating benign and vulnerable executions.}
+td->td_bitspersample <= a, where 16 < a < 62    {correct: a different boundary is drawn, but its between the dev patch boundary (which is based on program-specific semantics), and the actual boundary for benign and vulnerable executions.}
+
+
+=================== (23) libxml2 cve_2012_5134 ===================
+
+len > 0                              {equiv}
+len >= 1                             {equiv}
+
+
+=================== (24) libxml2 cve_2016_1838 ===================
+
+ctxt->input->end - ctxt->input->cur >= tlen                   {equiv}
+_GSize_ctxt->input->cur - _GDiff_ctxt->input->cur >= tlen     {equiv}
+
+
+=================== (25) libxml2 cve_2016_1839 ===================
+
+ctxt->input->base <= ctxt->input->cur - len                    {equiv}
+ctxt->input->cur - ctxt->input->base >= len                    {equiv}
+_GDiff_ctxt->input->cur >= len                                 {equiv}
+
+
+=================== (26) libxml2 cve_2017_5969 ===================
+
+content->c2 != NULL                   {equiv}
+
+
+=================== (27) potrace cve_2013_7437 ===================
+
+bmpinfo.w <= 0x7fffffff               {equiv}
+bmpinfo.w <= 2147483647               {equiv}
+bmpinfo.w < 2147483648                {equiv}
+
+
+=================== (28) zziplib cve_2017_5974 ===================
+
+(There is no equiv patch invariant for this, since the developer patch is wrong. (It does not make the exploit input pass.))
+
+_GSize_block >= 32                    {correct}
+_GSize_block - _GDiff_block >= 32     {correct}
+
+
+=================== (29) zziplib cve_2017_5975 ===================
+
+header != NULL                        {equiv}
+
+
+=================== (30) zziplib cve_2017_5976 ===================
+
+ext + 4 <= ext_backup + _GSize_ext_backup     {equiv}
