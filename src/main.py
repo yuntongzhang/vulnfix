@@ -446,8 +446,12 @@ def main():
             # only do patch generation for daikon backend to demonstrate the idea
             patch_inv = final_patch_invs[0]
             logger.info(f'Generating patch from the patch invariant `{patch_inv}` ...')
-            generator = PatchGenerator(patch_inv)
-            is_patched = generator.gen()
+            try:
+                generator = PatchGenerator(patch_inv)
+                is_patched = generator.gen()
+            except Exception as e:
+                logger.info(f'Patch generation unsuccessful due to exception {e}.')
+                is_patched = False
 
     # fini_logger()
 
