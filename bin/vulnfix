@@ -1,0 +1,3 @@
+#!/bin/bash
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+python3.8 "$(dirname $SCRIPT_DIR)/src/main.py" "$@"
