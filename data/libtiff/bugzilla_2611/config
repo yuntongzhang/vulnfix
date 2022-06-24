@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libtiff/bugzilla_2611/source/tools/tiffmedian
+cmd=<exploit> out.tmp
+exploit=/home/yuntong/vulnfix/data/libtiff/bugzilla_2611/exploit
+fix-location=tif_ojpeg.c:816
+crash-location=tif_ojpeg.c:816
+runtime-dir=/home/yuntong/vulnfix/data/libtiff/bugzilla_2611/runtime
+source-dir=/home/yuntong/vulnfix/data/libtiff/bugzilla_2611/source
+fix-file-path=libtiff/tif_ojpeg.c
+fix-line=816
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g" -j10

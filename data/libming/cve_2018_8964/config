@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libming/cve_2018_8964/source/util/swftophp
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/libming/cve_2018_8964/exploit
+fix-location=decompile.c:398
+crash-location=decompile.c:398
+runtime-dir=/home/yuntong/vulnfix/data/libming/cve_2018_8964/runtime
+source-dir=/home/yuntong/vulnfix/data/libming/cve_2018_8964/source
+fix-file-path=util/decompile.c
+fix-line=398
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -fsanitize=undefined -g" CXXFLAGS="-static -fsanitize=address -fsanitize=undefined -g"

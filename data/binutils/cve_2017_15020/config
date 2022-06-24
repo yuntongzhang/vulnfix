@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/binutils/cve_2017_15020/source/binutils/nm-new
+cmd=-A -a -l -S -s --special-syms --synthetic --with-symbol-versions -D <exploit>
+exploit=/home/yuntong/vulnfix/data/binutils/cve_2017_15020/exploit
+fix-location=dwarf1.c:211
+crash-location=dwarf1.c:254
+runtime-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_15020/runtime
+source-dir=/home/yuntong/vulnfix/data/binutils/cve_2017_15020/source
+fix-file-path=bfd/dwarf1.c
+fix-line=211
+build-cmd=make clean && make CFLAGS="-ldl -lutil -fsanitize=address -ggdb" CXXFLAGS="-fsanitize=address -ldl -lutil -ggdb" LDFLAGS=" -ldl -lutil -fsanitize=address" -j10

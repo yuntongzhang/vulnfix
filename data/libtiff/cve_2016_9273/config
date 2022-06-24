@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libtiff/cve_2016_9273/source/tools/tiffsplit
+cmd=<exploit>
+exploit=/home/yuntong/vulnfix/data/libtiff/cve_2016_9273/exploit
+fix-location=tif_strip.c:65
+crash-location=tiffsplit.c:246
+runtime-dir=/home/yuntong/vulnfix/data/libtiff/cve_2016_9273/runtime
+source-dir=/home/yuntong/vulnfix/data/libtiff/cve_2016_9273/source
+fix-file-path=libtiff/tif_strip.c
+fix-line=65
+build-cmd=make clean && make CFLAGS="-static -fsanitize=address -g" CXXFLAGS="-static -fsanitize=address -g" LDFLAGS="-fsanitize=address" -j10

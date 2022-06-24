@@ -1,0 +1,10 @@
+binary=/home/yuntong/vulnfix/data/libjpeg/cve_2018_14498/source/cjpeg
+cmd=-outfile out.tmp <exploit>
+exploit=/home/yuntong/vulnfix/data/libjpeg/cve_2018_14498/exploit
+fix-location=rdbmp.c:209
+crash-location=rdbmp.c:209
+runtime-dir=/home/yuntong/vulnfix/data/libjpeg/cve_2018_14498/runtime
+source-dir=/home/yuntong/vulnfix/data/libjpeg/cve_2018_14498/source
+fix-file-path=rdbmp.c
+fix-line=209
+build-cmd=make clean && make -j10
