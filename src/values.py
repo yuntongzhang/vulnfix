@@ -152,3 +152,6 @@ binary_full_path = ""
 
 all_pass_inputs = list()
 all_fail_inputs = list()
+
+# manually supplied patch file for patch validation only
+vpatch_file = ""

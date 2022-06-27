@@ -14,6 +14,7 @@ from logger import *
 from backend import *
 from ce_refiner import CeRefiner
 from patch_gen import PatchGenerator
+from validate import validate_patch
 import concfuzz
 
 
@@ -337,6 +338,8 @@ def main():
                         help='use afl-only fuzzing instead of snapshot fuzzing')
     parser.add_argument('--reset-bench', default=False, action='store_true',
                         help='reset benchmark subject for re-running it.')
+    parser.add_argument('--vpatch', default='',
+                        help='Pass in a patch file to validate correctness against AFL test suite.')
 
     parsed_args = parser.parse_args()
     config_file = parsed_args.config_file
@@ -347,9 +350,14 @@ def main():
     values.concfuzz = parsed_args.concfuzz
     values.aflfuzz = parsed_args.aflfuzz
     values.resetbench = parsed_args.reset_bench
+    values.vpatch_file = parsed_args.vpatch
 
     parse_config_and_setup_runtime(config_file)
     init_logger()
+
+    if values.vpatch_file:
+        validate_patch(values.vpatch_file)
+        return
 
     if values.resetbench:
         if not os.path.isfile(values.backup_file_path):
