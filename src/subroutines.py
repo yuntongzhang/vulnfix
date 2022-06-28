@@ -587,6 +587,9 @@ def classify_execution_return_value(bug_type, crash_lines, is_crash_in_e9, rc):
 
     if crash_lines:
         # was able to get some crash line info (i.e. output not terribly poluted)
+        if values.vpatch_file:
+            # if doing patch validation, treat any sanitizer error as failing
+            return ExecResult.failing
         # can afford to compare bug type and crash location
         innermost_frame = crash_lines[0]
         if bug_type == values.bug_type and innermost_frame == values.exploit_crash_line:
