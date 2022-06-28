@@ -64,7 +64,8 @@ def parse_config_and_setup_runtime(config_file):
     # binary
     values.binary_full_path = config_dict['binary']
     bin_name = os.path.split(values.binary_full_path)[1]
-    shutil.copy2(values.binary_full_path, values.dir_runtime)
+    if not values.resetbench:
+        shutil.copy2(values.binary_full_path, values.dir_runtime)
     values.bin_orig = os.path.join(values.dir_runtime, bin_name)
     values.bin_afl = os.path.join(values.dir_runtime, bin_name + ".afl")
     values.bin_snapshot = os.path.join(values.dir_runtime, bin_name + ".snapshot")
