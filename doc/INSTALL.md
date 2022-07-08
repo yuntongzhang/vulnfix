@@ -1,5 +1,7 @@
 # Install
 
+> This file contains steps for using VulnFix in docker, or installing it from source.
+
 ## Docker
 
 There is a docker image for VulnFix, in which the tool and dependency has been built:
@@ -24,11 +26,11 @@ git clone --recurse-submodules <git url of this project>
 
 ### Build
 
-First, install latest `elfutils` from source:
+First, install `elfutils` from source:
 
 ```bash
-curl -o elfutils-latest.tar.bz2 https://sourceware.org/elfutils/ftp/elfutils-latest.tar.bz2
-tar -xf elfutils-latest.tar.bz2
+curl -o elfutils-0.185.tar.bz2 https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2
+tar -xf elfutils-0.185.tar.bz2
 cd elfutils-0.185/
 sudo apt install pkg-config zlib1g zlib1g-dev autoconf libtool cmake
 ./configure --disable-debuginfod --disable-libdebuginfod

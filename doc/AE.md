@@ -1,5 +1,7 @@
 # VulnFix Artifact Evaluation
 
+> This file contains steps on replicating results in the ISSTA22 paper.
+
 Public github repo for reference: https://github.com/yuntongzhang/vulnfix.
 
 The .md files and `result-expected` folder are only included in github and Zenodo, not in the docker image.
@@ -368,6 +370,7 @@ settings may work as well):
   - In addtion, the experiments can generate more files. In our testing run of all the experiments,
   an additional 8GB is taken up by the runtime-generated files.
 
+
 ### Contents of CVE directory
 
 Files in each CVE directory (e.g. `data/libtiff/bugzilla-2633`) and what they are:
@@ -378,30 +381,6 @@ Files in each CVE directory (e.g. `data/libtiff/bugzilla-2633`) and what they ar
 - `README.txt`: Some additional information such as where the exploit was downloaded from.
 - `setup.sh`: Script to download and build the vulnerable version of the program.
 
-
-### Contents of runtime directory
-
-Apart from the result, VulnFix stores various runtime-generated files in the runtime directory
-(e.g. `data/libtiff/bugzilla-2633/runtime`). This directory can contain the following intermediate files:
-
-- `vulnfix.result`: The final result from VulnFix.
-- `vulnfix.patch`: An example patch generated from patch invariant, if `patch_gen` module is invoked.
-- `vulnfix.log.info`, `vulnfix.log.debug`: log files.
-- `bin`: The original binary (or patched binary if `patch_gen` was invoked).
-- `bin.afl`: Instrumented binary for AFL.
-- `bin.snapshot`: Instrumented binary for snapshot logging.
-- `bin.mutate`: Instrumented binary for snapshot mutation.
-- `snapshot.out*`: Intermediate snapshot files.
-- `afl-*`: Various AFL directories.
-- `pass.dtrace`, `fail.dtrace`, `pass.inv`, `daikon.decls`: Input files generated for daikon.
-- `input.sl`: Input file generated for cvc5.
-
-
-### Variables in snapshot
-
-Apart from regularly looking variables, the variables `_GSize_*` and `_GDiff_*` in the patch
-invariants are the ghost variables, representing `size(ptr)` and `ptr-base(ptr)` respectively
-(there are more details about ghost variables in the paper).
 
 ### Randomness in experiments
 
@@ -422,15 +401,3 @@ test oracle, which is not perfect. For a buffer overflow, if an malicious input 
 the redzone by ASAN and access some other valid buffer (but not the intended one), ASAN does not flag
 it as error. As such, although being rare, if such an input is generated, its snapshot can be
 wrongly classified, causing VulnFix to fail. Re-running VulnFix can likely avoid such issue.
-
-
-### Patch generation with ghost variables
-
-To convert ghost variables in patch invariant to concrete program constructs when generating a patch,
-the current implementation relies on memory allocators that gives the information about buffer size
-and buffer base. In principle, any such allocator would work. For convenience, we use the ASAN
-allocator, which is already used for detecting the bug. During patch generation, ghost variables
-are replaced with calls to `generic_buffer_size` and `generic_buffer_base`, which are implemented
-to obtain these information from the ASAN allocator.
-
-Other techniques, such as additionally storing the allocation size and base in the program, would also be possible.

@@ -1,6 +1,6 @@
 # Manual
 
-_This file contains information about using VulnFix._
+> This file contains information about using VulnFix.
 
 ## Main program
 
@@ -37,6 +37,7 @@ this value will be prefixed with addtional string.
 Additionally, some optional fields are supported:
 
 - `input-from-stdin`: the program should take input from stdin instead of file.
-- `afl-skip-deterministic`: Explicitly set whether AFL should skip deterministic stage. If not specified,
-VulnFix automatically determines this.
+- `afl-skip-deterministic`: Explicitly set whether AFL should skip deterministic stage. It is
+recommended to set this field to `false` for bugs that can benefit from deterministic input
+mutations (such as `NULL dereference`). If not specified, VulnFix internally determines this.
 - `use-raw-size`: Use raw size (in bytes) instead of #(element) for ghost size variable.
