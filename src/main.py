@@ -64,8 +64,6 @@ def parse_config_and_setup_runtime(config_file):
     # binary
     values.binary_full_path = config_dict['binary']
     bin_name = os.path.split(values.binary_full_path)[1]
-    if not values.resetbench:
-        shutil.copy2(values.binary_full_path, values.dir_runtime)
     values.bin_orig = os.path.join(values.dir_runtime, bin_name)
     values.bin_afl = os.path.join(values.dir_runtime, bin_name + ".afl")
     values.bin_snapshot = os.path.join(values.dir_runtime, bin_name + ".snapshot")
@@ -97,6 +95,13 @@ def parse_config_and_setup_runtime(config_file):
     if values.resetbench:
         # resetting benchmark just needs to recompile program, does not need to run it
         return
+    # if project is in vulnerable state, restore it so we can record crash information
+    if os.path.isfile(values.backup_file_path):
+        restore_orig_patch_file()
+        rebuild_project()
+    # move executable to runtime directory
+    if not values.resetbench:
+        shutil.copy2(values.binary_full_path, values.dir_runtime)
     # record original binary crashing line
     bug_type, crash_lines, rc = run_bin_orig_raw(values.file_exploit)
     values.bug_type = bug_type
