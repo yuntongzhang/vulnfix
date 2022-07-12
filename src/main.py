@@ -346,7 +346,7 @@ def main():
                         help='reset benchmark subject for re-running it.')
     parser.add_argument('--vpatch', default='',
                         help='Pass in a patch file to validate correctness against AFL test suite.')
-    parser.add_argument('--only-input-gen', default=False,
+    parser.add_argument('--only-input-gen', default=False, action='store_true',
                         help='If true, only perform input-level fuzzing to generate a test suite and exit.')
 
     parsed_args = parser.parse_args()
