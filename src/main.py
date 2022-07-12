@@ -346,6 +346,8 @@ def main():
                         help='reset benchmark subject for re-running it.')
     parser.add_argument('--vpatch', default='',
                         help='Pass in a patch file to validate correctness against AFL test suite.')
+    parser.add_argument('--only-input-gen', default=False,
+                        help='If true, only perform input-level fuzzing to generate a test suite and exit.')
 
     parsed_args = parser.parse_args()
     config_file = parsed_args.config_file
@@ -357,6 +359,7 @@ def main():
     values.aflfuzz = parsed_args.aflfuzz
     values.resetbench = parsed_args.reset_bench
     values.vpatch_file = parsed_args.vpatch
+    only_input_gen = parsed_args.only_input_gen
 
     parse_config_and_setup_runtime(config_file)
     init_logger()
@@ -420,6 +423,9 @@ def main():
     afl_fail = os.listdir(values.dir_afl_fail)
     values.all_pass_inputs = sorted([ os.path.join(values.dir_afl_pass, t) for t in afl_pass ])
     values.all_fail_inputs = sorted([ os.path.join(values.dir_afl_fail, t) for t in afl_fail ])
+
+    if only_input_gen:
+        return
 
     # STEP (3): generate initial candidate invariant with backend
     backend.generate_input_from_snapshots()
