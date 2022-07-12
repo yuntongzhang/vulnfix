@@ -70,6 +70,6 @@ def rebuild_and_validate():
                     print(f"Validation failed on input: {fail_input}.\n")
                     return False
             except subprocess.TimeoutExpired as e:
-                print(f"Warning: Timeout for inout {fail_input}. Regarding it as a passed input.")
+                print(f"Warning: Timeout for input {fail_input}. Regarding it as a passed input.")
         print("Patch validation succeeded.\n")
         return True
