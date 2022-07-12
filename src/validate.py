@@ -64,9 +64,12 @@ def rebuild_and_validate():
             return False
         # validate
         for fail_input in values.all_fail_inputs:
-            exec_result = run_bin_orig(fail_input)
-            if exec_result == ExecResult.failing:
-                print(f"Validation failed on input: {fail_input}.\n")
-                return False
+            try:
+                exec_result = run_bin_orig(fail_input)
+                if exec_result == ExecResult.failing:
+                    print(f"Validation failed on input: {fail_input}.\n")
+                    return False
+            except subprocess.TimeoutExpired as e:
+                print(f"Warning: Timeout for inout {fail_input}. Regarding it as a passed input.")
         print("Patch validation succeeded.\n")
         return True
