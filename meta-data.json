@@ -148,5 +148,50 @@
     "id": 30,
     "bug_id": "cve_2017_5976",
     "subject": "zziplib"
+  },
+  {
+    "id": 31,
+    "bug_id": "cve_2017_15020",
+    "subject": "binutils"
+  },
+  {
+    "id": 32,
+    "bug_id": "cve_2018_14498",
+    "subject": "libjpeg"
+  },
+  {
+    "id": 33,
+    "bug_id": "cve_2018_8806",
+    "subject": "libming"
+  },
+  {
+    "id": 34,
+    "bug_id": "cve_2018_8964",
+    "subject": "libming"
+  },
+  {
+    "id": 35,
+    "bug_id": "bugzilla_2611",
+    "subject": "libtiff"
+  },
+  {
+    "id": 36,
+    "bug_id": "cve_2016_9273",
+    "subject": "libtiff"
+  },
+  {
+    "id": 37,
+    "bug_id": "cve_2016_10092",
+    "subject": "libtiff"
+  },
+  {
+    "id": 38,
+    "bug_id": "cve_2016_10272",
+    "subject": "libtiff"
+  },
+  {
+    "id": 39,
+    "bug_id": "cve_2017_5225",
+    "subject": "libtiff"
   }
 ]
