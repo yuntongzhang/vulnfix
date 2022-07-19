@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE root [
+  <!ELEMENT root (a,b)><!ELEMENT a EMPTY>
+  <!ELEMENT b (#PCDATA|c)* >
+  <!ELEMENT c ANY>
+  <!ELEMENT d ANY>
+  <!ELEMENT e ANY>
+  <!ELEMENT f ANY>
+  <!--dren,cp,choieq patterns iq P47,P48,P49,P-->
+  <!ELEMENT child0 (a)>
+  <!ELEMENT child1 (a|M|c)>
+  <!ELEMENT child2 (h ,b,b?,a*,c,c,a,a,b+,B ) >
+  <!ELEMENT child3 (a+>  <!ELEMENT cHild4 (a, (b|cp+, (a|d)?, (e|f)* )?>
+œ <!ELEMENT child5 ( (a),b,c) )* >
+  <!ELEMEN\ child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | b)+>  
+]>
+<root#<aF><b>
+ïïïï
+  <!ELEMENTNchild7 ((a,b)|c*|((d|e),b,c) )+ >
+  <!ELEMENT ( a, (bb), b)+>  
+]>
+<root#<aF><b>
+   <c></c >
+   conten] of b element
+</b></roptP47,P48,P49,P50*-->
