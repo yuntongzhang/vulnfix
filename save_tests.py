@@ -40,10 +40,10 @@ for vulnerability in vulnerabilities:
 
     if os.path.isdir(DIR_SRC_PASS):
         os.makedirs(DIR_DEST_PASS, exist_ok=True)
-        shutil.copytree(DIR_SRC_PASS, DIR_DEST_PASS)
+        shutil.copytree(DIR_SRC_PASS, DIR_DEST_PASS, dirs_exist_ok=True)
     
     if os.path.isdir(DIR_SRC_FAIL):
         os.makedirs(DIR_DEST_FAIL, exist_ok=False)
-        shutil.copytree(DIR_SRC_FAIL, DIR_DEST_FAIL)
+        shutil.copytree(DIR_SRC_FAIL, DIR_DEST_FAIL, dirs_exist_ok=True)
 
     os.chdir(DIR_MAIN)
