@@ -38,4 +38,6 @@ RUN git submodule update
 # build is slow within docker build, so just build inside container
 RUN ./build.sh
 
+ENV PATH="/home/yuntong/vulnfix/bin:${PATH}"
+
 ENTRYPOINT /bin/bash
