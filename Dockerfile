@@ -36,6 +36,6 @@ WORKDIR /home/yuntong/vulnfix/
 RUN git submodule init
 RUN git submodule update
 # build is slow within docker build, so just build inside container
-# RUN ./build.sh
+RUN ./build.sh
 
 ENTRYPOINT /bin/bash
