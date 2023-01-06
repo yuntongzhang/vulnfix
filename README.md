@@ -1,5 +1,10 @@
 # VulnFix
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![docker pull](https://img.shields.io/docker/pulls/yuntongzhang/vulnfix)](https://hub.docker.com/repository/docker/yuntongzhang/vulnfix)
+![docker build](https://github.com/yuntongzhang/vulnfix/actions/workflows/docker-image.yml/badge.svg)
+
+
 VulnFix - An automated program repair technique for fixing security vulnerabilities via inductive
 inference.
 
