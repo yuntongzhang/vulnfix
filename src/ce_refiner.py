@@ -3,17 +3,20 @@ import random
 from ce_single_var import *
 from subroutines import *
 from snapshot import *
+from backend import BackendBase
+from typing import List
 
 EARLY_TERM_THRESHOLD = 5
 
 class CeRefiner(object):
-    def __init__(self, exprs, inputs_pass, inputs_fail, backend):
+    def __init__(self, exprs: List[str], inputs_pass, inputs_fail, backend):
         """
         :param exprs: list of candidate expressions (constraints)
         :param inputs_pass: list of passing test inputs
         :param inputs_fail: list of failing test inputs
         """
         self.round = 0
+        # always keep the current candidate invs from the current round
         self.candidate_exprs = exprs
         self.consecutive_same_count = 0
         # all the inputs given
@@ -22,7 +25,7 @@ class CeRefiner(object):
         # record which inputs have not been used
         self.untouched_inputs_pass = set(inputs_pass)
         self.untouched_inputs_fail = set(inputs_fail)
-        self.backend = backend
+        self.backend: BackendBase = backend
         self.__refresh_driver_tests()
 
     def __refresh_driver_tests(self):
@@ -91,7 +94,7 @@ class CeRefiner(object):
                 f' The most recent patch invariants are: {[e for e in self.candidate_exprs]}.\n')
             return candidate_exprs
 
-        # update refiner attributes
+        # update refiner attributes (set our own internal state)
         self.round += 1
         if candidate_exprs == self.candidate_exprs:
             self.consecutive_same_count += 1

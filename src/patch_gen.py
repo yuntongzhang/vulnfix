@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 import clang.cindex as cc
+from typing import Optional
 
 import values
 from subroutines import *
@@ -18,6 +19,7 @@ class PatchGenerator(object):
         """
         self.inv = inv
         self.fix_line = values.fix_line
+        # a temporary location on disk to store the diff patch file
         self.patch_file_path = values.fix_file_path + ".patch"
         self.need_include_ghost = False
         self.sed_include_cmd = ""
@@ -109,7 +111,7 @@ class PatchGenerator(object):
         return False
 
 
-    def gen(self):
+    def gen(self) -> Optional[str]:
         """
         Entry point for generating a patch, given a patch invariant.
 
@@ -122,8 +124,9 @@ class PatchGenerator(object):
             new condition.
         Since there is no simple way of deciding them, the two choices are tried
         one by one until a patch that passes validation is produced.
+
+        :returns: Path to a patch file if succeed; None if fail.
         """
-        patched = False
         lines = list()
         with open(values.backup_file_path, "r") as f:
             lines = f.readlines()
@@ -131,32 +134,32 @@ class PatchGenerator(object):
         fix_line_index = self.fix_line - 1 ### 0-indexing!
         fix_line_content = lines[fix_line_index]
         if self.is_if_cond_line(fix_line_content) or self.is_while_cond_line(fix_line_content):
-            patched = self.gen_patch_for_if_while(lines[fix_line_index:])
+            patch_file = self.gen_patch_for_if_while(lines[fix_line_index:])
         elif self.is_for_cond_line(fix_line_content):
-            patched = self.gen_patch_for_for(lines[fix_line_index:])
+            patch_file = self.gen_patch_for_for(lines[fix_line_index:])
 
-        if not patched:
+        if patch_file is None:
             # Now, either patch location is not condition,
             # or, patch location is condition, but failed to integrate inv into cond
             # generate walkaround fix with patch invariant
-            patched = self.gen_patch_for_non_cond()
+            patch_file = self.gen_patch_for_non_cond()
 
-        if patched:
-            logger.info(f"Patch generation successful! "
-                f"Please find the patch at: {values.file_final_patch}.")
-        else:
+        if patch_file is None:
+            # too bad, we tried all options but still fail
             logger.info("Patch generation unsuccessful. "
-                "However, a single patch invariant has been generated. "
+                "However, some patch invariants has been generated. "
                 "Please manually generate a patch based on the patch invariant.")
+        else:
+            logger.info(f"Patch generation successful for this inv!")
 
-        return patched
+        return patch_file
 
 
-    def gen_patch_for_for(self, trailing_lines):
+    def gen_patch_for_for(self, trailing_lines) -> Optional[str]:
         """
         Integrate the patch invariant into an existing for condition.
         :param trailing_lines: list of lines starting from the patch line.
-        :returns: True if succeeds, False if fails.
+        :returns: Path to a patch file if succeed; None if fail.
         """
         logger.debug("Trying to integrate patch invariant into for-condition ...")
         # determines the open/close ; position of the for-statement
@@ -185,11 +188,12 @@ class PatchGenerator(object):
         return self.enumerate_patch_options(cmd_registry)
 
 
-    def enumerate_patch_options(self, cmd_options):
+    def enumerate_patch_options(self, cmd_options) -> Optional[str]:
         """
         Enumerate and try out the patch options, until a successful patch is seen.
         :param cmd_options: list of cmd lists, where each list represents one patch option.
-        :returns: True if any one option succeeds; False if all fail.
+        :returns: Path to a patch file, if any option succeeds;
+                  None if all fail.
         """
         for cmd_list in cmd_options:
             restore_orig_patch_file()
@@ -199,13 +203,13 @@ class PatchGenerator(object):
                 os.system(self.sed_include_cmd)
             is_valid_patch = self.rebuild_and_validate_patch()
             if is_valid_patch:
-                self.gen_final_patch_file()
+                patch_f_path = self.gen_final_patch_file()
                 logger.debug("Successfully integrated patch into existing condition!")
-                return True
+                return patch_f_path
 
         logger.debug(f"Failed to integrate patch invariant into existing condition. "
             "Generating walkaround patch ...")
-        return False
+        return None
 
 
     def __find_semicolon_positions(self, trailing_lines):
@@ -224,11 +228,11 @@ class PatchGenerator(object):
         return [-1, -1, -1, -1]
 
 
-    def gen_patch_for_if_while(self, trailing_lines):
+    def gen_patch_for_if_while(self, trailing_lines) -> Optional[str]:
         """
         Integrate the patch invariant into an existing if/while condition expr.
         :param trailing_lines: list of lines starting from the patch line.
-        :returns: True if succeeds, False if fails.
+        :returns: Path to a patch file if succeed; None if fail.
         """
         logger.debug("Trying to integrate patch invariant into if/while-condition ...")
         # determines the open/close parenthesis position of the condition
@@ -370,12 +374,14 @@ class PatchGenerator(object):
         return (-1, -1)
 
 
-    def gen_patch_for_non_cond(self):
+    def gen_patch_for_non_cond(self) -> Optional[str]:
         """
         Used if the fix line does not contain a condition.
         In this case, following patch will be inserted before the fix line:
         +    if (!(patch invariant)) exit(1);
-        :returns: True if succeeds, False if fails.
+
+        :returns: Path to a patch file, if any option succeeds;
+                  None if all fail.
         """
         logger.debug("Trying to generate walkaround patch ...")
         restore_orig_patch_file()
@@ -387,21 +393,25 @@ class PatchGenerator(object):
             os.system(self.sed_include_cmd)
         is_valid_patch = self.rebuild_and_validate_patch()
         if is_valid_patch:
-            self.gen_final_patch_file()
+            patch_f_path = self.gen_final_patch_file()
             logger.debug("Successfully generated walkaround patch!")
         else:
+            patch_f_path = None
             logger.debug(f"Failed to generate walkaround patch from patch invariant `{self.inv}`.")
-        return is_valid_patch
+        return patch_f_path
 
 
-    def gen_final_patch_file(self):
+    def gen_final_patch_file(self) -> str:
         """
-        Produce final .patch file, and moves it to runtime dir.
+        Produce final .patch file.
+        :returns: path to the generated patch file.
+                  Clients should copy it if they want to preserve the content.
         """
         diff_cmd = ("diff -u " + values.backup_file_path + " "
             + values.fix_file_path + " > " + self.patch_file_path)
         os.system(diff_cmd)
-        shutil.copy2(self.patch_file_path, values.file_final_patch)
+        # shutil.copy2(self.patch_file_path, values.file_final_patch)
+        return self.patch_file_path
 
 
     def rebuild_and_validate_patch(self):
