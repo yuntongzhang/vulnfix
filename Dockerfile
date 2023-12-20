@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 RUN apt clean
 RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install -y build-essential curl wget software-properties-common llvm
-# add this for installing latest version of python3.8
+# add this for installing latest version of python3.11
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt update
 
@@ -34,9 +34,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt purge --yes --auto-remove cmake && \
     apt-get install --yes --no-install-recommends cmake
 
 # install python3.8 and the libraries we need
-RUN DEBIAN_FRONTEND=noninteractive apt install -y python3.8
-RUN python3.8 -m pip install toml pyparsing z3-solver libclang
-RUN python3 -m pip install toml pyparsing
+# RUN DEBIAN_FRONTEND=noninteractive apt install -y python3.8
+# RUN python3.8 -m pip install toml pyparsing z3-solver libclang
+# RUN python3 -m pip install toml pyparsing
+RUN DEBIAN_FRONTEND=noninteractive apt install -y python3.11
+RUN python3.11 -m pip install toml pyparsing z3-solver libclang
+# RUN python3 -m pip install toml pyparsing
 
 # build the project
 COPY . /home/yuntong/vulnfix/
