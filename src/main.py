@@ -261,13 +261,13 @@ def save_invariant_result(patch_invs):
     result_file = pjoin(values.dir_result, "invariants.txt")
     with open(result_file, "w") as f:
         if not patch_invs:
-            f.write("FAIL: no patch invariants can be generated\n")
+            f.write("FAIL: no patch invariants can be generated.\n")
         else:
-            f.write("SUCCESS: Some patch invariants are generated. (Their correctness is not checked yet)\n")
+            f.write("SUCCESS: Some patch invariants are generated. (Their correctness is not checked yet.)\n")
             f.write("\nPatch Invariants:\n")
             f.write(str(len(patch_invs)) + "\n")
             f.write(f'{[i for i in patch_invs]}')
-
+            f.write('\n')
 
 def save_one_patch(old_patch_file: str, patch_name: str):
     """
@@ -491,6 +491,8 @@ def main():
         logger.info('No patches generated.')
     else:
         logger.info(f'Generated {num_patches} patches.')
+
+    logger.info(f"VulnFix finished. Please find results at {values.dir_result}.")
 
 
 if __name__ == "__main__":
