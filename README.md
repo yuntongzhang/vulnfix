@@ -17,6 +17,11 @@ the vulnerable states, which can be used to generate a patch later on.
 
 ## Getting started
 
+_New changes has been added to VulnFix since the ISSTA22 publication. To get the version during
+ISSTA22 period and steps for using that version, please refer to [ISSTA22.md](doc/ISSTA22.md)._
+
+> TODO: Add getting started instruction for the new tool version.
+
 Firstly, certain OS configurations are required to be set for VulnFix and its dependencies (e.g. AFL).
 To set these, run:
 
@@ -30,35 +35,27 @@ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 
 The VulnFix tool and its dependencies are available in docker container. (Please refer to
 [doc/INSTALL.md](doc/INSTALL.md) for instructions on building it from source.)
+
 To start:
 
 ```bash
-docker pull yuntongzhang/vulnfix:issta22
-docker run -it --memory=30g --name vulnfix-issta22 yuntongzhang/vulnfix:issta22
+docker pull yuntongzhang/vulnfix:latest-manual
+docker run -it --memory=30g --name vulnfix yuntongzhang/vulnfix:latest-manual
 ```
 
-Once inside the container, navigate to the VulnFix directory and invoke it on CVE-2012-5134:
+Once inside the container, invoke it on one example (e.g. CVE-2012-5134) with:
 
 ```bash
+# clone and build the target project
+cd /home/yuntong/vulnfix/data/libxml2/cve_2012_5134
+./setup.sh
+# run vulnfix to repair
 cd /home/yuntong/vulnfix
-python3.8 src/main.py data/libxml2/cve_2012_5134/config
+vulnfix data/libxml2/cve_2012_5134/config
 ```
 
-AFL should be started after a shorting period of time of parsing the config file and setting up the
-runtime directory. The snapshot fuzzing stage will follow. The total time taken for this command
-is roughly 12-15 minutes, and the final few lines printed on screen should be something like this:
-
-```
-2022-05-24 05:40:33 --- Final patch invariants - #(1) : ['len >= 1'] ---
-
-2022-05-24 05:40:33 Generating patch from the patch invariant `len >= 1` ...
-2022-05-24 05:40:41 Patch generation successful! Please find the patch at: /home/yuntong/vulnfix/data/libxml2/cve_2012_5134/runtime/vulnfix.patch.
-```
-
-This indicates a successful run of VulnFix, with a single patch invariant `len >= 1` produced in the
-end. A patch file is also generated based on this invariant, at the location:
-`/home/yuntong/vulnfix/data/libxml2/cve_2012_5134/runtime/vulnfix.patch`.
-
+After VulnFix finishes, the results (generated invariants and patches) can be found in
+`/home/yuntong/vulnfix/data/libxml2/cve_2012_5134/runtime/result/`.
 
 ## Documentation
 
