@@ -133,6 +133,7 @@ class PatchGenerator(object):
         # check what the fix line actually is
         fix_line_index = self.fix_line - 1 ### 0-indexing!
         fix_line_content = lines[fix_line_index]
+        patch_file = None
         if self.is_if_cond_line(fix_line_content) or self.is_while_cond_line(fix_line_content):
             patch_file = self.gen_patch_for_if_while(lines[fix_line_index:])
         elif self.is_for_cond_line(fix_line_content):
